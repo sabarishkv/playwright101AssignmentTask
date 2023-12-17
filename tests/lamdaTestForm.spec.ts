@@ -1,5 +1,5 @@
 import { test, expect, Locator } from "@playwright/test";
-test("Test Scenario 2", async ({ page, baseURL }) => {
+test("Test Scenario 3", async ({ page, baseURL }) => {
   await page.goto("https://www.lambdatest.com/selenium-playground");
   await page.locator("//a[text()='Input Form Submit']").click();
   await page.locator("//button[text()='Submit']").click();
