@@ -1,9 +1,8 @@
 import { test, expect, Locator } from "@playwright/test";
-import { executionAsyncId } from "async_hooks";
-test("has title", async ({ page, baseURL }) => {
+test("Test Scenario 2", async ({ page, baseURL }) => {
   await page.goto("https://www.lambdatest.com/selenium-playground");
-await page.locator("//a[text()='Drag & Drop Sliders']").click();
-await page.waitForTimeout(5000);
+  await page.locator("//a[text()='Drag & Drop Sliders']").click();
+  await page.waitForTimeout(5000);
   const sliderXPath = "//div[@id='slider3']//input";
   const slider = await page.waitForSelector(sliderXPath);
 
@@ -13,7 +12,8 @@ await page.waitForTimeout(5000);
 
     if (sliderBoundingBox) {
       // Calculate the target position for the slider handle
-      const targetX = sliderBoundingBox.x + (sliderBoundingBox.width * (95 / 100));
+      const targetX =
+        sliderBoundingBox.x + sliderBoundingBox.width * (95 / 100);
 
       // Use mouse to drag the slider handle to the desired position
       await page.mouse.move(sliderBoundingBox.x, sliderBoundingBox.y);
@@ -29,18 +29,21 @@ await page.waitForTimeout(5000);
 
       // Validate whether the slider is set to 95
       if (currentValue === 95) {
-        console.log('Slider successfully set to 95.');
+        console.log("Slider successfully set to 95.");
       } else {
         console.error(`Slider value is ${currentValue}, expected 95.`);
       }
     } else {
-      console.error('Slider bounding box is null.');
+      console.error("Slider bounding box is null.");
     }
   } else {
-    console.error('Slider element not found.');
+    console.error("Slider element not found.");
   }
 
-  await expect(page.locator("//div[@id='slider3']//output")).toHaveText('95');
+  await expect(page.locator("//div[@id='slider3']//output")).toHaveText("95");
+});
 
-
-})
+/*Test Scenario 2:
+1. Open the https://www.lambdatest.com/selenium-playground page and click “Drag & Drop Sliders” under “Progress Bars & Sliders”.
+2. Select the slider “Default value 15” and drag the bar to make it 95 by validating whether the range value shows 95.
+*/

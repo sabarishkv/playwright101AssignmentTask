@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-test("has title", async ({ page, baseURL }) => {
+test("Test Scenario 1", async ({ page, baseURL }) => {
   await page.goto("https://www.lambdatest.com/selenium-playground");
   await page.locator("//a[text()='Simple Form Demo']").click();
   await expect(page).toHaveURL(/simple-form-demo/)
