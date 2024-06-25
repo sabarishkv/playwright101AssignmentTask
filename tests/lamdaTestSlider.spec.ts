@@ -13,7 +13,7 @@ test("Test Scenario 2", async ({ page, baseURL }) => {
     if (sliderBoundingBox) {
       // Calculate the target position for the slider handle
       const targetX =
-        sliderBoundingBox.x + sliderBoundingBox.width * (95 / 100);
+        sliderBoundingBox.x + sliderBoundingBox.width * ((95-2)/ 100);
 
       // Use mouse to drag the slider handle to the desired position
       await page.mouse.move(sliderBoundingBox.x, sliderBoundingBox.y);
@@ -39,7 +39,7 @@ test("Test Scenario 2", async ({ page, baseURL }) => {
   } else {
     console.error("Slider element not found.");
   }
-
+await page.pause();
   await expect(page.locator("//div[@id='slider3']//output")).toHaveText("95");
 });
 
